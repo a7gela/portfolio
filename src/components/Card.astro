@@ -1,0 +1,39 @@
+---
+import Link from "../components/Link.astro";
+import Tag from "../components/Tag.astro";
+
+const {
+  links = [],
+  image,
+  title,
+  subtitle,
+  description,
+  tags = [],
+} = Astro.props;
+---
+
+<div class="group">
+  <div
+    class="bg-card hover:bg-tag cursor-pointer font-sans rounded-sm p-4 flex flex-col justify-between transition-colors"
+  >
+    <span class="flex flex-row flex-wrap justify-end gap-2">
+      {
+        links.map(({ name, link }: { name: string; link: string }) => {
+          return <Link name={name} link={link} />;
+        })
+      }
+    </span>
+    <img
+      src={image}
+      class="rounded-sm py-6 px-4 object-center object-scale-down sm:h-70 h-fit group-has-hover:scale-105 transition-all"
+    />
+    <div class="flex flex-col gap-0.5">
+      <span class="text-xl text-text">{title}</span>
+      <p class="text-base text-subtext">{subtitle}</p>
+      <p class="text-base text-text">{description}</p>
+      <span class="flex flex-row flex-wrap gap-1 pt-1.5">
+        {tags.map((tag: string) => <Tag name={tag} />)}
+      </span>
+    </div>
+  </div>
+</div>

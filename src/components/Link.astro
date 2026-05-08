@@ -1,0 +1,13 @@
+---
+import { MoveUpRight } from "@lucide/astro";
+const { name, link } = Astro.props;
+---
+
+<a
+  href={link}
+  target="_blank"
+  class="flex flex-row items-center font-sans text-text text-base hover:text-subtext w-fit gap-0.5"
+>
+  {name}
+  <MoveUpRight size={16} stroke-width={1.7} />
+</a>
