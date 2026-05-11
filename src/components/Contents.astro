@@ -1,0 +1,31 @@
+---
+import { ArrowLeft } from "@lucide/astro";
+---
+  <ol id="toc" class="font-sans text-base text-subtext pl-0 mt-[285px] p-4 w-[270px] rounded-sm">
+    <a
+      id="back"
+      href="/"
+      class="text-text hover:text-subtext flex flex-row gap-0.5 items-center cursor-pointer mb-6"
+    >
+      <ArrowLeft size={16} stroke-width={1.7} />
+      Back
+    </a>
+
+    <li class="flex flex-col gap-2">
+      <slot />
+    </li>
+  </ol>
+
+<style>
+  a:hover:not(#back) {
+    color: var(--color-text);
+  }
+
+  a {
+    text-wrap: wrap;
+  }
+</style>
+
+<script>
+
+</script>

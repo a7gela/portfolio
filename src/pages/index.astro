@@ -7,9 +7,9 @@ import Card from "../components/Card.astro";
   <p class="font-sans text-subtext text-base pt-12">
     Open for work / Melbourne, VIC
   </p>
-  <h1 class="font-sans text-text text-2xl max-w-148 pt-4 pb-8">
-    Hey, I'm Angela! I'm a software developer and UI/UX designer, passionate
-    about building thoughtful and human-centred digital experiences.
+  <h1 class="font-sans text-text text-2xl max-w-148 pt-4 pb-4">
+    Hey, I'm Angela! I'm a software developer and designer, passionate
+    about building thoughtful and human-centred experiences on the web.
   </h1>
   <p class="font-sans text-text text-base">
     Email:
@@ -35,35 +35,59 @@ import Card from "../components/Card.astro";
     Some of my projects below :) Click to learn more.
   </p>
 
+  <!-- Projects section -->
   <div class="grid md:grid-cols-2 gap-6">
-    <Card
-      links={[
-        { name: "Live Site", link: "https://vocabforest.com/" },
-        { name: "View Repo", link: "https://github.com/a7gela/vocab-forest/" },
-      ]}
-      image="../src/assets/images/vocab-forest/vocab-forest-homepage.png"
-      title="Vocab Forest: Web App"
-      subtitle="Full stack development, UI/UX"
-      description="A web app that allows users to search and save words/definitions into lists. Built using React and Supabase, and styled using Tailwind."
-      tags={["React", "Tailwind", "Supabase", "TypeScript", "Cloudflare"]}
-    />
+    <div id="vocab-forest-card">
+      <Card
+        links={[
+          { name: "Live Site", link: "https://vocabforest.com/" },
+          {
+            name: "View Repo",
+            link: "https://github.com/a7gela/vocab-forest/",
+          },
+        ]}
+        image="../src/assets/images/vocab-forest/vocab-forest-homepage.png"
+        title="Vocab Forest: Web App"
+        subtitle="Full stack development, UI/UX"
+        description="A web app that allows users to search and save words/definitions into lists. Built using React and Supabase, and styled using Tailwind."
+        tags={["React", "Tailwind", "Supabase", "TypeScript", "Cloudflare"]}
+      />
+    </div>
 
-    <Card
-      links={[
-        {
-          name: "Australian Diet",
-          link: "https://public.tableau.com/app/profile/angela1624/viz/AusDiet/Dashboard3",
-        },
-        {
-          name: "Shark bite incidents",
-          link: "https://a4gela.github.io/3179_A2/",
-        },
-      ]}
-      image="../src/assets/images/data-vis/data-vis-card-image.png"
-      title="Data Visualisations"
-      subtitle="Data visualisation, Data cleaning and analysis"
-      description="Interactive data visualisations exploring Australian diets (Tableau) and shark bite incidents (VegaLite, JavaScript) that I created during uni."
-      tags={["Tableau", "VegaLite", "JavaScript", "HTML/CSS"]}
-    />
+    <div id="data-vis-card">
+      <Card
+        links={[
+          {
+            name: "Australian Diet",
+            link: "https://public.tableau.com/app/profile/angela1624/viz/AusDiet/Dashboard3",
+          },
+          {
+            name: "Shark bite incidents",
+            link: "https://a4gela.github.io/3179_A2/",
+          },
+        ]}
+        image="../src/assets/images/data-vis/data-vis-card-image.png"
+        title="Data Visualisations"
+        subtitle="Data visualisation, Data cleaning and analysis"
+        description="Interactive data visualisations exploring Australian diets (Tableau) and shark bite incidents (VegaLite, JavaScript) that I created during uni."
+        tags={["Tableau", "VegaLite", "JavaScript", "HTML/CSS"]}
+      />
+    </div>
   </div>
 </Layout>
+
+<script>
+  const handleClick = (destination: string) => {
+    window.location.href = destination;
+  };
+
+  document
+    .getElementById("vocab-forest-card")
+    ?.addEventListener("click", (e) => {
+      handleClick("/vocab-forest");
+    });
+
+  document.getElementById("data-vis-card")?.addEventListener("click", (e) => {
+    handleClick("/data-vis");
+  });
+</script>

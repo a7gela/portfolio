@@ -1,0 +1,8 @@
+---
+const { item } = Astro.props;
+---
+
+<div class="flex flex-col font-sans text-base w-full">
+  <p class="text-text">{item}</p>
+  <div class="text-subtext flex flex-col"><slot /></div>
+</div>

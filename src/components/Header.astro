@@ -1,0 +1,30 @@
+---
+import { Moon } from "@lucide/astro";
+import { Sun } from "@lucide/astro";
+---
+
+<header
+  class="sticky top-0 z-10 bg-background font-sans text-text text-base flex flex-row justify-between sm:px-8 px-4 py-4"
+>
+  <a href="/" class="p-2 cursor-pointer hover:text-subtext">~/angela</a>
+  <div class="flex flex-row gap-6">
+    <a
+      href="mailto:angeh247@gmail.com"
+      target="_blank"
+      class="p-2 cursor-pointer hover:text-subtext"
+      >email
+    </a>
+    <a
+      href="https://github.com/a7gela/"
+      target="_blank"
+      class="p-2 cursor-pointer hover:text-subtext"
+      >github
+    </a>
+
+    <button id="themeToggle" class="p-2 cursor-pointer hover:text-subtext">
+      <span class="moon">
+        <Moon size={18} stroke-width={1.7} />
+      </span>
+    </button>
+  </div>
+</header>

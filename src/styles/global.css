@@ -1,9 +1,10 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 * {
-	scrollbar-width: thin;
-	scrollbar-color: var(--color-scrollbar) var(--color-background) !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar) var(--color-background) !important;
 }
 
 @theme {
@@ -16,13 +17,16 @@
   --color-subtext: #767676;
   --color-tag: #e2e2e2;
   --color-scrollbar: #cccccc;
+}
 
+[data-theme="dark"] {
   /* dark theme */
-  /* --color-background: #121212;
-  --color-card: #1c1c1c;
-  --color-text: #d9d9d9;
-  --color-subtext: #a5a5a5;
-  --color-tag: #343434; */
+  --color-background-dark: #121212;
+  --color-card-dark: #1c1c1c;
+  --color-text-dark: #d9d9d9;
+  --color-subtext-dark: #a5a5a5;
+  --color-tag-dark: #343434;
+  --color-scrollbar-dark: #323232;
 }
 
 @font-face {

@@ -1,0 +1,132 @@
+---
+import CaseStudy from "../layouts/CaseStudy.astro";
+import Section from "../layouts/Section.astro";
+import TableItem from "../components/TableItem.astro";
+import Divider from "../components/Divider.astro";
+import Contents from "../components/Contents.astro";
+import Layout from "../layouts/Layout.astro";
+
+import { MoveDown } from "@lucide/astro";
+---
+
+<CaseStudy
+  image="../src/assets/images/vocab-forest/vocab-forest-homepage.png"
+  title="Vocab Forest: Web App"
+  links={[
+    { name: "Live Site", link: "https://vocabforest.com/" },
+    { name: "View Repo", link: "https://github.com/a7gela/vocab-forest/" },
+  ]}
+  tags={["React", "Tailwind", "Supabase", "TypeScript", "Cloudflare"]}
+>
+  <div slot="TableOfContents">
+    <!-- Table of contents -->
+    <Contents>
+      <a href="#overview">Overview</a>
+      <a href="#design-process">Design process</a>
+
+      <!-- Design process contents -->
+      <ol>
+        <li class="flex flex-col gap-2 ml-4">
+          <a href="#problem-space">Problem space</a>
+          <a href="#explorations">Explorations</a>
+          <a href="#wireframe-and-design-system">Wireframe and design system</a>
+          <a href="#final-design-and-insights">Final design and insights</a>
+        </li>
+      </ol>
+
+      <!-- Dev process contents -->
+    </Contents>
+  </div>
+  <!-- Overview -->
+  <Section section="Overview" id="overview">
+    <p>
+      Vocab Forest is a web app that allows users to search and save vocabulary
+      cards into lists. Built using React and Supabase as its main technologies,
+      this was a personal project that I worked on with a friend with the goal
+      of learning more about full stack development.
+    </p>
+    <div
+      class="flex flex-col sm:flex-row sm:gap-2 gap-4 sm:justify-between py-4"
+    >
+      <TableItem item="Role">
+        Full Stack Developer<br />
+        UI/UX Designer
+      </TableItem>
+      <TableItem item="Team">
+        Nadzmi Ag Thomas<br />
+        Angela Ho
+      </TableItem>
+      <TableItem item="Timeline">
+        March-April 2026<br />
+        5 weeks
+      </TableItem>
+    </div>
+  </Section>
+
+  <Divider />
+
+  <!-- Design process -->
+  <Section section="Design process" id="design-process">
+    <a
+      class="text-subtext cursor-pointer hover:text-text flex flex-row gap-0.5 items-center"
+    >
+      Skip to read about the Dev process
+      <MoveDown size={16} stroke-width={1.7} />
+    </a>
+  </Section>
+
+  <!-- Problem space -->
+  <Section section="Problem space" id="problem-space">
+    <p>
+      Why make Vocab Forest? Vocab Forest was created because I wanted a quick
+      and simple way to save unfamiliar words and their definitions while
+      reading. I found existing methods of recording vocabulary to be a hassle,
+      for example:
+    </p>
+    <div
+      class="flex flex-col sm:flex-row sm:gap-2 gap-4 sm:justify-between py-4"
+    >
+      <TableItem item="Using pen and paper">
+        <ol>
+          <li>Interrupted my reading</li>
+          <li>Was slow, especially for longer definitions</li>
+          <li>And had no sorting mechanism, making review difficult</li>
+        </ol>
+      </TableItem>
+      <TableItem item="Using spreadsheets">
+        <ol>
+          <li>
+            Was tedious, having to copy-paste multiple times into the correct
+            column & formatting not carrying over
+          </li>
+          <li>Not mobile-friendly</li>
+        </ol>
+      </TableItem>
+      <TableItem item="Using dictionary sites">
+        <ol>
+          <li>
+            A negative user-experience: being dictionary first meant that I had
+            to navigate several times to find my saved definitions
+          </li>
+          <li>Cluttered with ads / unnecessary info</li>
+        </ol>
+      </TableItem>
+    </div>
+    <div class="flex flex-row gap-2 justify-between py-4"></div>
+  </Section>
+</CaseStudy>
+
+<style>
+  p {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+  }
+
+  ol {
+    display: block;
+    list-style-type: disc;
+    padding-inline-start: 20px;
+  }
+</style>

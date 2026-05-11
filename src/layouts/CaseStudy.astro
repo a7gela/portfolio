@@ -1,0 +1,47 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Link from "../components/Link.astro";
+import Tag from "../components/Tag.astro";
+import Divider from "../components/Divider.astro";
+import Contents from "../components/Contents.astro";
+
+const { image, title, links, tags } = Astro.props;
+---
+
+<Layout>
+  <div class="flex flex-row">
+    <!-- Table of contents -->
+    <slot name="TableOfContents" />
+
+    <div class="flex flex-col justify-center items-center">
+      <!-- Header image -->
+      <div
+        class="bg-card rounded-sm w-full md:w-[700px] h-[285px] flex justify-center items-center"
+      >
+        <img src={image} class="rounded-sm object-scale-down h-[180px]" />
+      </div>
+
+      <!-- Case study header elements: title, links, tags -->
+      <div class="flex flex-col w-full sm:w-[597px]">
+        <h1 class="font-sans text-text text-2xl pt-5">{title}</h1>
+
+        <span class="flex flex-row flex-wrap gap-2 py-1.5">
+          {
+            links.map(({ name, link }: { name: string; link: string }) => {
+              return <Link name={name} link={link} />;
+            })
+          }
+        </span>
+
+        <span class="flex flex-row flex-wrap gap-1 py-2">
+          {tags.map((tag: string) => <Tag name={tag} />)}
+        </span>
+
+        <Divider />
+
+        <!-- Slot in contents of case study NOT incl. table of contents -->
+        <slot />
+      </div>
+    </div>
+  </div>
+</Layout>

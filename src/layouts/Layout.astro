@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
-import { Moon } from "@lucide/astro";
-import { Copyright } from "@lucide/astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <html lang="en">
@@ -9,47 +9,17 @@ import { Copyright } from "@lucide/astro";
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Angela's Portfolio</title>
+    <title>Angela Ho</title>
   </head>
-  <body class="bg-background h-screen flex justify-center">
+  <body
+    class="bg-background dark:bg-background-dark h-screen flex justify-center"
+  >
     <div class="max-w-7xl w-full min-h-screen relative">
-      <!-- header -->
-      <header
-        class="font-sans text-text text-base flex flex-row justify-between sm:px-8 px-4 py-4"
-      >
-        <a href="/" class="p-2 cursor-pointer">~/angela</a>
-        <div class="flex flex-row gap-6">
-          <a
-            href="mailto:angeh247@gmail.com"
-            target="_blank"
-            class="p-2 cursor-pointer hover:text-subtext">email</a
-          >
-          <a
-            href="https://github.com/a7gela/"
-            target="_blank"
-            class="p-2 cursor-pointer hover:text-subtext">github</a
-          >
-          <button class="p-2 cursor-pointer hover:text-subtext"
-            ><Moon size={18} stroke-width={1.7} /></button
-          >
-        </div>
-      </header>
-
-      <!-- main content -->
+      <Header />
       <main class="sm:px-12 px-6">
         <slot />
       </main>
-
-      <!-- footer -->
-      <footer
-        class="font-sans text-subtext text-sm flex sm:flex-row sm:justify-between flex-col items-center px-12 pb-6 pt-16"
-      >
-        <p>Thanks for dropping by!</p>
-        <p class="flex flex-row gap-1 items-center">
-          <Copyright size={14} stroke-width={1.7} />
-          2026 Angela Ho. All rights reserved.
-        </p>
-      </footer>
+      <Footer />
     </div>
   </body>
 </html>
