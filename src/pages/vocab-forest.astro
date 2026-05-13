@@ -1,53 +1,67 @@
 ---
 import CaseStudy from "../layouts/CaseStudy.astro";
-import Section from "../layouts/Section.astro";
 import TableItem from "../components/TableItem.astro";
 import Divider from "../components/Divider.astro";
 import Contents from "../components/Contents.astro";
-import Layout from "../layouts/Layout.astro";
+import SubContents from "../components/SubContents.astro";
+import { vocabForest } from "../data/projects.js";
 
 import { MoveDown } from "@lucide/astro";
+
+const sections = {
+  overview: { id: "#overview", name: "Overview" },
+  design_process: { id: "#design-process", name: "Design process" },
+  problem_space: { id: "#problem-space", name: "Problem space" },
+  explorations: { id: "#explorations", name: "Explorations" },
+  wireframe_and_design_system: {
+    id: "#wireframe-and-design-system",
+    name: "Wireframe and design system",
+  },
+  final_design_and_insights: {
+    id: "#final-design-and-insights",
+    name: "Final design and insights",
+  },
+  dev_process: { id: "#dev-process", name: "Dev process" },
+};
 ---
 
 <CaseStudy
-  image="../src/assets/images/vocab-forest/vocab-forest-homepage.png"
-  title="Vocab Forest: Web App"
-  links={[
-    { name: "Live Site", link: "https://vocabforest.com/" },
-    { name: "View Repo", link: "https://github.com/a7gela/vocab-forest/" },
-  ]}
-  tags={["React", "Tailwind", "Supabase", "TypeScript", "Cloudflare"]}
+  image={vocabForest.image}
+  title={vocabForest.title}
+  links={vocabForest.links}
+  tags={vocabForest.tags}
 >
-  <div slot="TableOfContents">
-    <!-- Table of contents -->
-    <Contents>
-      <a href="#overview">Overview</a>
-      <a href="#design-process">Design process</a>
+  <!-- Table of contents -->
+  <Contents slot="TableOfContents">
+    <a href={sections.overview.id}>{sections.overview.name}</a>
+    <a href={sections.design_process.id}>{sections.design_process.name}</a>
 
-      <!-- Design process contents -->
-      <ol>
-        <li class="flex flex-col gap-2 ml-4">
-          <a href="#problem-space">Problem space</a>
-          <a href="#explorations">Explorations</a>
-          <a href="#wireframe-and-design-system">Wireframe and design system</a>
-          <a href="#final-design-and-insights">Final design and insights</a>
-        </li>
-      </ol>
+    <!-- Design process toc -->
+    <SubContents>
+      <a href={sections.problem_space.id}>{sections.problem_space.name}</a>
+      <a href={sections.explorations.id}>{sections.explorations.name}</a>
+      <a href={sections.wireframe_and_design_system.id}
+        >{sections.wireframe_and_design_system.name}</a
+      >
+      <a href={sections.final_design_and_insights.id}
+        >{sections.final_design_and_insights.name}</a
+      >
+    </SubContents>
 
-      <!-- Dev process contents -->
-    </Contents>
-  </div>
+    <!-- Dev process toc -->
+    <a href={sections.dev_process.id}>{sections.dev_process.name}</a>
+  </Contents>
+
   <!-- Overview -->
-  <Section section="Overview" id="overview">
+  <section>
+    <h2 id={sections.overview.id}>{sections.overview.name}</h2>
     <p>
       Vocab Forest is a web app that allows users to search and save vocabulary
       cards into lists. Built using React and Supabase as its main technologies,
       this was a personal project that I worked on with a friend with the goal
       of learning more about full stack development.
     </p>
-    <div
-      class="flex flex-col sm:flex-row sm:gap-2 gap-4 sm:justify-between py-4"
-    >
+    <div class="flex flex-col sm:flex-row sm:gap-2 gap-4 sm:justify-between pb-4">
       <TableItem item="Role">
         Full Stack Developer<br />
         UI/UX Designer
@@ -61,31 +75,32 @@ import { MoveDown } from "@lucide/astro";
         5 weeks
       </TableItem>
     </div>
-  </Section>
+  </section>
 
   <Divider />
 
   <!-- Design process -->
-  <Section section="Design process" id="design-process">
+  <section>
+    <h2 id={sections.design_process.id}>{sections.design_process.name}</h2>
     <a
-      class="text-subtext cursor-pointer hover:text-text flex flex-row gap-0.5 items-center"
+      href={sections.dev_process.id}
+      class="text-subtext cursor-pointer flex flex-row gap-0.5 items-center pb-4"
     >
       Skip to read about the Dev process
       <MoveDown size={16} stroke-width={1.7} />
     </a>
-  </Section>
+  </section>
 
   <!-- Problem space -->
-  <Section section="Problem space" id="problem-space">
+  <section>
+    <h3 id={sections.problem_space.id}>{sections.problem_space.name}</h3>
     <p>
       Why make Vocab Forest? Vocab Forest was created because I wanted a quick
       and simple way to save unfamiliar words and their definitions while
       reading. I found existing methods of recording vocabulary to be a hassle,
       for example:
     </p>
-    <div
-      class="flex flex-col sm:flex-row sm:gap-2 gap-4 sm:justify-between py-4"
-    >
+    <div class="flex flex-col sm:flex-row sm:gap-2 gap-4 sm:justify-between pb-4">
       <TableItem item="Using pen and paper">
         <ol>
           <li>Interrupted my reading</li>
@@ -112,21 +127,75 @@ import { MoveDown } from "@lucide/astro";
         </ol>
       </TableItem>
     </div>
-    <div class="flex flex-row gap-2 justify-between py-4"></div>
-  </Section>
+    <p>
+      From these observations, I decided that Vocab Forest should be a
+      lightweight and easy-to-use app. It should only centre one core
+      functionality: search and save definitions for later review.
+    </p>
+  </section>
+
+  <!-- Explorations -->
+  <section>
+    <h3 id={sections.explorations.id}>{sections.explorations.name}</h3>
+    <p>
+      Having the core functionality in mind, my initial explorations focused on
+      two main questions: what data to display, and how to display it. This was
+      done through brainstorming and sketch sessions.
+    </p>
+    <p>
+      I narrowed down the design to having a card gallery as the “main” view,
+      and an expanded sidebar view on the left. I wanted this sidebar to include
+      information that was important to me - definitions (including all
+      variations), synonyms, antonyms, and a section for notes.
+    </p>
+  </section>
 </CaseStudy>
 
 <style>
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  h2 {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--text-xl);
+    line-height: var(--text-xl--line-height);
+    color: var(--color-text);
+    padding-top: calc(var(--spacing) * 4);
+    padding-bottom: calc(var(--spacing) * 2);
+  }
+
+  h3 {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--text-lg);
+    line-height: var(--text-lg--line-height);
+    color: var(--color-text);
+    padding-top: calc(var(--spacing) * 4);
+    padding-bottom: calc(var(--spacing) * 2);
+  }
+
   p {
     font-family: var(--font-sans);
     color: var(--color-text);
     font-size: var(--text-base);
     line-height: var(--text-base--line-height);
+    padding-bottom: calc(var(--spacing) * 4)
   }
 
   ol {
     display: block;
     list-style-type: disc;
     padding-inline-start: 20px;
+  }
+
+  a:hover {
+    color: var(--color-text);
+  }
+
+  a {
+    text-wrap: wrap;
   }
 </style>

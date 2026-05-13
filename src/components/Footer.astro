@@ -1,5 +1,5 @@
 ---
-import { Copyright } from "@lucide/astro";
+
 ---
 
 <footer
@@ -7,7 +7,12 @@ import { Copyright } from "@lucide/astro";
 >
   <p>Thanks for dropping by!</p>
   <p class="flex flex-row gap-1 items-center">
-    <Copyright size={14} stroke-width={1.7} />
-    2026 Angela Ho
+    &copy <span id="copyright-year"></span> Angela Ho. All rights reserved.
   </p>
 </footer>
+
+<script>
+  document.querySelector("#copyright-year").textContent = new Date()
+    .getFullYear()
+    .toString();
+</script>

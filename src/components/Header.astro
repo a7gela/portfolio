@@ -1,6 +1,8 @@
 ---
 import { Moon } from "@lucide/astro";
 import { Sun } from "@lucide/astro";
+
+import contact from "../data/contact.js";
 ---
 
 <header
@@ -8,19 +10,13 @@ import { Sun } from "@lucide/astro";
 >
   <a href="/" class="p-2 cursor-pointer hover:text-subtext">~/angela</a>
   <div class="flex flex-row gap-6">
-    <a
-      href="mailto:angeh247@gmail.com"
-      target="_blank"
-      class="p-2 cursor-pointer hover:text-subtext"
-      >email
-    </a>
-    <a
-      href="https://github.com/a7gela/"
-      target="_blank"
-      class="p-2 cursor-pointer hover:text-subtext"
-      >github
-    </a>
-
+    {
+      contact.map((c) => (
+        <a href={c.link} target="_blank" class="p-2 cursor-pointer hover:text-subtext">
+          {c.name}
+        </a>
+      ))
+    }
     <button id="themeToggle" class="p-2 cursor-pointer hover:text-subtext">
       <span class="moon">
         <Moon size={18} stroke-width={1.7} />
@@ -28,3 +24,14 @@ import { Sun } from "@lucide/astro";
     </button>
   </div>
 </header>
+
+<style>
+  /* p-2 cursor-pointer hover:text-subtext */
+  a {
+    padding: calc(var(--spacing) * 2);
+    cursor: pointer;
+  }
+  a:hover {
+    color: var(--color-subtext);
+  }
+</style>

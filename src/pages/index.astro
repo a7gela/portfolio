@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
+import contact from "../data/contact.js";
+import { projects } from "../data/projects.js";
 ---
 
 <Layout>
@@ -8,71 +10,48 @@ import Card from "../components/Card.astro";
     Open for work / Melbourne, VIC
   </p>
   <h1 class="font-sans text-text text-2xl max-w-148 pt-4 pb-4">
-    Hey, I'm Angela! I'm a software developer and designer, passionate
-    about building thoughtful and human-centred experiences on the web.
+    Hey, I'm Angela! I'm a software developer and designer, passionate about
+    building thoughtful and human-centred experiences on the web.
   </h1>
-  <p class="font-sans text-text text-base">
-    Email:
-    <a
-      href="mailto:angeh247@gmail.com"
-      target="_blank"
-      class="cursor-pointer hover:text-subtext">angeh247@gmail.com</a
-    >
-  </p>
-  <p class="font-sans text-text text-base">
-    GitHub:
-    <a
-      href="https://github.com/a7gela/"
-      target="_blank"
-      class="cursor-pointer hover:text-subtext">@a7gela</a
-    >
-  </p>
+  {
+    contact.map((c) => (
+      <p class="font-sans text-text text-base">
+        {c.name}:
+        <a
+          href={c.link}
+          target="_blank"
+          class="cursor-pointer hover:text-subtext"
+        >
+          {c.display}
+        </a>
+      </p>
+    ))
+  }
   <img
-    src="/src/assets/images/cat-ascii-light.png"
+    src="/src/assets/cat-ascii-light.png"
     class="absolute lg:top-60 sm:right-50 right-20 h-30"
   />
   <p class="font-sans text-text text-base sm:pt-32 pt-48 pb-4">
     Some of my projects below :) Click to learn more.
   </p>
+  
 
   <!-- Projects section -->
   <div class="grid md:grid-cols-2 gap-6">
-    <div id="vocab-forest-card">
-      <Card
-        links={[
-          { name: "Live Site", link: "https://vocabforest.com/" },
-          {
-            name: "View Repo",
-            link: "https://github.com/a7gela/vocab-forest/",
-          },
-        ]}
-        image="../src/assets/images/vocab-forest/vocab-forest-homepage.png"
-        title="Vocab Forest: Web App"
-        subtitle="Full stack development, UI/UX"
-        description="A web app that allows users to search and save words/definitions into lists. Built using React and Supabase, and styled using Tailwind."
-        tags={["React", "Tailwind", "Supabase", "TypeScript", "Cloudflare"]}
-      />
-    </div>
-
-    <div id="data-vis-card">
-      <Card
-        links={[
-          {
-            name: "Australian Diet",
-            link: "https://public.tableau.com/app/profile/angela1624/viz/AusDiet/Dashboard3",
-          },
-          {
-            name: "Shark bite incidents",
-            link: "https://a4gela.github.io/3179_A2/",
-          },
-        ]}
-        image="../src/assets/images/data-vis/data-vis-card-image.png"
-        title="Data Visualisations"
-        subtitle="Data visualisation, Data cleaning and analysis"
-        description="Interactive data visualisations exploring Australian diets (Tableau) and shark bite incidents (VegaLite, JavaScript) that I created during uni."
-        tags={["Tableau", "VegaLite", "JavaScript", "HTML/CSS"]}
-      />
-    </div>
+    {
+      projects.map((project) => (
+        <div id={project.cardId}>
+          <Card 
+            links={project.links},
+            image={project.image},
+            title={project.title},
+            subtitle={project.subtitle},
+            description={project.description},
+            tags={project.tags}
+          />
+        </div>
+      ))
+    }
   </div>
 </Layout>
 
