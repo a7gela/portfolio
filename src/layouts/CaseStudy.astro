@@ -15,14 +15,14 @@ const { image, title, links, tags } = Astro.props;
       <div class="flex flex-col items-center">
         <!-- Header image -->
         <div
-          class="bg-card rounded-sm w-full md:w-[700px] h-[285px] flex justify-center items-center"
+          class="bg-card rounded-sm w-full md:w-175 h-71.25 flex justify-center items-center"
         >
-          <img src={image} class="rounded-sm object-scale-down h-[180px]" />
+          <img src={image.source} alt={image.alt} class="rounded-sm object-scale-down h-45" />
         </div>
 
         <!-- Case study header elements: title, links, tags -->
-        <div class="flex flex-col w-full sm:w-[597px]">
-          <h1 class="font-sans text-text text-2xl pt-5">{title}</h1>
+        <div class="flex flex-col w-full sm:w-149.25">
+          <h1 class="font-sans text-text text-3xl pt-6 pb-2">{title}</h1>
 
           <span class="flex flex-row flex-wrap gap-2 py-1.5">
             {

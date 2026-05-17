@@ -6,32 +6,38 @@ import { projects } from "../data/projects.js";
 ---
 
 <Layout>
-  <p class="font-sans text-subtext text-base pt-12">
-    Open for work / Melbourne, VIC
-  </p>
-  <h1 class="font-sans text-text text-2xl max-w-148 pt-4 pb-4">
-    Hey, I'm Angela! I'm a software developer and designer, passionate about
-    building thoughtful and human-centred experiences on the web.
-  </h1>
-  {
-    contact.map((c) => (
-      <p class="font-sans text-text text-base">
-        {c.name}:
-        <a
-          href={c.link}
-          target="_blank"
-          class="cursor-pointer hover:text-subtext"
-        >
-          {c.display}
-        </a>
+  <div class="flex sm:flex-row flex-col sm:justify-between items-end">
+    <div>
+      <p class="font-sans text-subtext text-base pt-12">
+        Open for work / Melbourne, Australia
       </p>
-    ))
-  }
-  <img
-    src="/src/assets/cat-ascii-light.png"
-    class="absolute lg:top-60 sm:right-50 right-20 h-30"
-  />
-  <p class="font-sans text-text text-base sm:pt-32 pt-48 pb-4">
+      <h1 class="font-sans text-text text-2xl max-w-148 pt-4 pb-12">
+        Hey, I'm Angela! I'm a software developer and designer, passionate about
+        building thoughtful and human-centred experiences on the web.
+      </h1>
+      {
+        contact.map((c) => (
+          <p class="font-sans text-text text-base">
+            {c.name}:
+            <a
+              href={c.link}
+              target="_blank"
+              class="cursor-pointer hover:text-subtext"
+            >
+              {c.display}
+            </a>
+          </p>
+        ))
+      }
+    </div>
+      <img
+        src="/src/assets/cat-ascii-light.webp"
+        alt="ASCII art of a cat"
+        class="h-30 ml-20 mr-6 lg:mr-30"
+      />
+  </div>
+
+  <p class="font-sans text-text text-base sm:pt-28 pt-20 pb-4">
     Some of my projects below :) Click to learn more.
   </p>
   
@@ -43,6 +49,7 @@ import { projects } from "../data/projects.js";
         <div id={project.cardId}>
           <Card 
             links={project.links},
+            linkId={project.linkId},
             image={project.image},
             title={project.title},
             subtitle={project.subtitle},
@@ -62,11 +69,20 @@ import { projects } from "../data/projects.js";
 
   document
     .getElementById("vocab-forest-card")
-    ?.addEventListener("click", (e) => {
+    ?.addEventListener("click", () => {
       handleClick("/vocab-forest");
     });
 
-  document.getElementById("data-vis-card")?.addEventListener("click", (e) => {
+  document.getElementById("data-vis-card")?.addEventListener("click", () => {
     handleClick("/data-vis");
   });
+
+  document.getElementById("vocabForestLinks")?.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  document.getElementById("dataVisLinks")?.addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
 </script>

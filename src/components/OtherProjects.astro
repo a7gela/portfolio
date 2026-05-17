@@ -1,0 +1,17 @@
+---
+import { MoveRight } from "@lucide/astro";
+
+const { title, subtitle, buttonId } = Astro.props;
+---
+
+<div class="flex flex-col">
+  <p class="my-4 text-text text-base font-medium font-sans">Other Projects</p>
+
+  <button
+    id={buttonId}
+    class="flex flex-col gap-2 p-4 bg-card hover:bg-tag font-sans text-left text-base rounded-sm cursor-pointer"
+  >
+    <p class="text-text font-medium">{title}</p>
+    <p class="text-subtext">{subtitle}</p>
+  </button>
+</div>

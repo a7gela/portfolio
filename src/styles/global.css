@@ -7,6 +7,14 @@
   scrollbar-color: var(--color-scrollbar) var(--color-background) !important;
 }
 
+::selection {
+  background: hsla(0, 0%, 68%, 0.315);
+}
+
+html {
+  scroll-padding-top: 52px;
+}
+
 @theme {
   --font-sans: "Switzer-Variable", sans-serif;
 
@@ -21,12 +29,12 @@
 
 [data-theme="dark"] {
   /* dark theme */
-  --color-background-dark: #121212;
-  --color-card-dark: #1c1c1c;
-  --color-text-dark: #d9d9d9;
-  --color-subtext-dark: #a5a5a5;
-  --color-tag-dark: #343434;
-  --color-scrollbar-dark: #323232;
+  --color-background: #121212;
+  --color-card: #1c1c1c;
+  --color-text: #d9d9d9;
+  --color-subtext: #a5a5a5;
+  --color-tag: #343434;
+  --color-scrollbar: #323232;
 }
 
 @font-face {

@@ -4,19 +4,21 @@ import Tag from "../components/Tag.astro";
 
 const {
   links = [],
-  image,
+  linkId,
+  image = {},
   title,
   subtitle,
   description,
   tags = [],
 } = Astro.props;
+
 ---
 
 <div class="group">
   <div
     class="bg-card hover:bg-tag cursor-pointer font-sans rounded-sm p-4 flex flex-col justify-between transition-colors"
   >
-    <span class="flex flex-row flex-wrap justify-end gap-2">
+    <span id={linkId} class="flex flex-row flex-wrap justify-end gap-2">
       {
         links.map(({ name, link }: { name: string; link: string }) => {
           return <Link name={name} link={link} />;
@@ -24,7 +26,8 @@ const {
       }
     </span>
     <img
-      src={image}
+      src={image.source}
+      alt={image.alt}
       class="rounded-sm py-6 px-4 object-center object-scale-down sm:h-70 h-fit group-has-hover:scale-105 transition-all"
     />
     <div class="flex flex-col gap-0.5">

@@ -8,7 +8,8 @@ export const projects = [
       { name: "Live Site", link: "https://vocabforest.com/" },
       { name: "View Repo", link: "https://github.com/a7gela/vocab-forest/" },
     ],
-    image: "../src/assets/vocab-forest/vocab-forest-homepage.png",
+    linkId: "vocabForestLinks",
+    image: {source: "../src/assets/vocab-forest/vocab-forest-homepage.webp", alt: "Screenshot of Vocab Forest's homepage"},
     cardId: "vocab-forest-card",
   },
   {
@@ -21,7 +22,8 @@ export const projects = [
         { name: "Australian Diet", link: "https://public.tableau.com/app/profile/angela1624/viz/AusDiet/Dashboard3" },
         { name: "Shark bite incidents", link: "https://a4gela.github.io/3179_A2/" },
       ],
-    image: "../src/assets/data-vis/data-vis-card-image.png",
+    linkId: "dataVisLinks",
+    image: {source: "../src/assets/data-vis/data-vis-card-image.webp", alt: "Screenshot of Australian diet visualisation and Shark bite incidents visualisation"},
     cardId: "data-vis-card"
   }
 ]

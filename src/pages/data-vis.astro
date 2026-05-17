@@ -1,10 +1,55 @@
 ---
 import CaseStudy from "../layouts/CaseStudy.astro";
 import Contents from "../components/Contents.astro";
-import { dataVis } from "../data/projects.js";
+import SubContents from "../components/SubContents.astro";
+import Divider from "../components/Divider.astro";
+import OtherProjects from "../components/OtherProjects.astro";
+import TableItem from "../components/TableItem.astro";
+import Link from "../components/Link.astro";
+import ImageBlock from "../components/ImageBlock.astro";
+
+import { dataVis, vocabForest } from "../data/projects.js";
+import barImg from "../assets/data-vis/aus-diet/bar.webp";
+import donutImg from "../assets/data-vis/aus-diet/donut.webp";
+import sankeyImg from "../assets/data-vis/aus-diet/sankey.webp";
+import waffleImg from "../assets/data-vis/aus-diet/waffle.webp";
+import barLineImg from "../assets/data-vis/shark-bite/bar-line.webp";
+import bubbleImg from "../assets/data-vis/shark-bite/bubble.webp";
+import mapImg from "../assets/data-vis/shark-bite/map.webp";
+import radialImg from "../assets/data-vis/shark-bite/radial.webp";
+import stackedBarImg from "../assets/data-vis/shark-bite/stacked-bar.webp";
 
 const sections = {
-  overview: { id: "#overview", name: "Overview" },
+  overview: { id: "overview", name: "Overview" },
+  aus_diet: { id: "australian-diets", name: "Australian diets visualisation" },
+  aus_diet_domain: {
+    id: "australian-diet-domain",
+    name: "Domain",
+  },
+  aus_diet_datasets: {
+    id: "australian-diet-datasets",
+    name: "What? - Datasets used and process",
+  },
+  aus_diet_why_how: {
+    id: "australian-diet-why-and-how",
+    name: "Why and how? - Decisions and rationale",
+  },
+  shark_bite_incidents: {
+    id: "shark-bite-incidents",
+    name: "Shark bite incidents visualisation",
+  },
+  shark_domain: {
+    id: "shark-bite-incidents-domain",
+    name: "Domain",
+  },
+  shark_datasets: {
+    id: "shark-bite-incidents-datasets",
+    name: "What? - Datasets used and process",
+  },
+  shark_why_how: {
+    id: "shark-bite-incidents-why-and-how",
+    name: "Why and how? - Decisions and rationale",
+  },
 };
 ---
 
@@ -16,37 +61,355 @@ const sections = {
 >
   <!-- Table of Contents -->
   <Contents slot="TableOfContents">
-    <a href={sections.overview.id}>{sections.overview.name}</a>
+    <a href={"#" + sections.overview.id}>{sections.overview.name}</a>
+    <a href={"#" + sections.aus_diet.id}>{sections.aus_diet.name}</a>
+    <SubContents>
+      <a href={"#" + sections.aus_diet_domain.id}
+        >{sections.aus_diet_domain.name}</a
+      >
+      <a href={"#" + sections.aus_diet_datasets.id}
+        >{sections.aus_diet_datasets.name}</a
+      >
+      <a href={"#" + sections.aus_diet_why_how.id}
+        >{sections.aus_diet_why_how.name}</a
+      >
+    </SubContents>
+    <a href={"#" + sections.shark_bite_incidents.id}
+      >{sections.shark_bite_incidents.name}</a
+    >
+    <SubContents>
+      <a href={"#" + sections.shark_domain.id}>{sections.shark_domain.name}</a>
+      <a href={"#" + sections.shark_datasets.id}
+        >{sections.shark_datasets.name}</a
+      >
+      <a href={"#" + sections.shark_why_how.id}>{sections.shark_why_how.name}</a
+      >
+    </SubContents>
   </Contents>
 
   <!-- Overview -->
-  <h2 id={sections.overview.id}>{sections.overview.name}</h2>
-  <p>Data visualisations overview description.</p>
+  <section>
+    <h2 id={sections.overview.id}>{sections.overview.name}</h2>
+    <p>
+      Two interactive data visualisations exploring Australian diets (Tableau)
+      and shark bite incidents (VegaLite, JavaScript) that I created during uni.
+    </p>
+    <div class="grid sm:grid-cols-3 grid-cols-1 sm:gap-2 gap-4 pb-4">
+      <TableItem item="Team"> Just me! </TableItem>
+      <TableItem item="Timeline"> 2022 </TableItem>
+      <TableItem item="Scope">
+        Data visualisation<br />Data cleaning and analysis
+      </TableItem>
+    </div>
+  </section>
+
+  <Divider />
+
+  <!-- Australian diets visualisation -->
+  <section>
+    <h2 id={sections.aus_diet.id}>{sections.aus_diet.name}</h2>
+    <Link name="View the full visualisation" link={dataVis.links[0].link} />
+    <div class="pb-4"></div>
+  </section>
+
+  <!-- AusDiet: Domain -->
+  <section>
+    <h3 id={sections.aus_diet_domain.id}>{sections.aus_diet_domain.name}</h3>
+    <p>
+      The visualisation explores the domain of ‘diet’, specifically analysing
+      the question of ‘How well do Australians meet the Dietary Guidelines?’. It
+      looks into what Australians are consuming in terms of the five major food
+      groups, where they are lacking, and the associated dietary risks and
+      diseases.
+    </p>
+  </section>
+
+  <!-- AusDiet: Datasets -->
+  <section>
+    <h3 id={sections.aus_diet_datasets.id}>
+      {sections.aus_diet_datasets.name}
+    </h3>
+    <p>
+      Datasets were sourced from government resources. All datasets were of
+      table types.
+    </p>
+    <p>
+      To make it easier to work with Tableau, most of the data was reformatted
+      into excel sheets - mostly changing the column and rows, excluding
+      irrelevant attributes, or combining tables.
+    </p>
+    <ol class="flex flex-col gap-1 pb-4">
+      <li>
+        Recommended number of serves for adults <a
+          href="https://www.eatforhealth.gov.au/food-essentials/how-much-do-we-need-each-day/recommended-number-serves-adults"
+          target="_blank"
+          class="text-subtext"
+          >(Australian Government Department of Health and Aged Care, 2015)</a
+        >
+      </li>
+      <li>
+        Tables S1 to S7 from Data tables: Nutrition across the life stages <a
+          href="https://www.aihw.gov.au/reports-data/behaviours-risk-factors/food-nutrition/data"
+          target="_blank"
+          class="text-subtext"
+          >(Australian Institute of Health and Welfare, 2018)</a
+        >
+      </li>
+      <li>
+        Table 2 from Diet <a
+          href="https://www.aihw.gov.au/reports/australias-health/diet"
+          target="_blank"
+          class="text-subtext"
+          >(Australian Institute of Health and Welfare, 2022)</a
+        >
+      </li>
+      <li>
+        Table 3 from Data tables: ABDS 2018 Risk factor estimates <a
+          href="https://www.aihw.gov.au/reports/burden-of-disease/abds-2018-interactive-data-risk-factors/data"
+          target="_blank"
+          class="text-subtext"
+          >(Australian Institute of Health and Welfare, 2021)</a
+        >
+      </li>
+    </ol>
+  </section>
+
+  <!-- AusDiet: Why and how -->
+  <section>
+    <h3 id={sections.aus_diet_why_how.id}>{sections.aus_diet_why_how.name}</h3>
+
+    <h4>Recommended number of servings for adults</h4>
+    <p>
+      The donut chart was used to display the recommended dietary intake, as a part of a whole. Colour hue channels 
+      were used to separate the 5 major food groups. I used intuitive hues such as brown for wholegrains, and green for 
+      vegetables, etc. to aid in identification. These hues were repeated for consistency throughout the visualisation.
+    </p>
+    <ImageBlock 
+      source={donutImg} 
+      alt="Donut chart with tooltip representing the recommended servings for adults" 
+      caption="Donut chart with tooltip representing the recommended servings for adults"
+    />
+
+    <h4>Consumption of food groups in comparison to the ADG</h4>
+    <p>
+      Bar charts were used for comparison. Additionally, a Gantt chart was used to represent the ADG target, using vertical 
+      positioning, for further comparison against the ADG.
+    </p>
+    <ImageBlock
+      source={barImg}
+      alt="Bar chart with tooltip representing the serves consumed across the five food groups, and how it compares to the ADG"
+      caption="Bar chart with tooltip representing the serves consumed across the five food groups, and how it compares to the ADG"
+    />
+
+    <h4>Proportion of Australians who do not eat the recommended serves</h4>
+    <p>The waffle charts were used to show proportions of populations, with percentage annotations for more accurate readings.</p>
+    <ImageBlock 
+      source={waffleImg}
+      alt="Waffle chart with tooltip representing the proportion of Australians who did not meet the Dietary Guidelines (cropped)"
+      caption="Waffle chart with tooltip representing the proportion of Australians who did not meet the Dietary Guidelines (cropped)"
+    />
+
+    <h4>Dietry risk factors and linked diseases measured by attributable DALY</h4>
+    <p>
+      A sankey diagram was used to show the linkage between dietary risk and disease, with the size of each flow representing 
+      the attributable DALY number. The sankey diagram can also be used to determine the proportion of dietary risk/disease due 
+      to the size of the stacked bars, where it is easy to see which dietary risks/diseases are most prevalent.
+    </p>
+    <ImageBlock 
+      source={sankeyImg}
+      alt="Sankey diagram with filtering and tooltip representing dietary risks and linked diseases"
+      caption="Sankey diagram with filtering and tooltip representing dietary risks and linked diseases"
+    />
+  </section>
+
+  <Divider />
+  <!-- Shark bite incidents visualisation -->
+  <section>
+    <h2 id={sections.shark_bite_incidents.id}>
+      {sections.shark_bite_incidents.name}
+    </h2>
+    <Link name="View the full visualisation" link={dataVis.links[1].link} />
+    <div class="pb-4"></div>
+  </section>
+
+  <section>
+    <h3 id={sections.shark_domain.id}>{sections.shark_domain.name}</h3>
+    <p>
+      The visualisation explores the domain of shark bite incidents in
+      Australia, exploring topics such as:
+      <ol class="flex flex-col gap-1 pb-4">
+        <li>
+          The distribution of shark bite incidents in Australia from 1803 to
+          2022
+        </li>
+        <li>Trends of shark-bite incidents</li>
+        <li>
+          The top 5 perpetrators of shark-bite incidents, including distribution
+          of fatal, injured and uninjured incidents per shark
+        </li>
+        <li>Timing of shark bite incident based on month, and</li>
+        <li>Victim activity during the time of the incident</li>
+      </ol>
+    </p>
+  </section>
+
+  <section>
+    <h3 id={sections.shark_datasets.id}>{sections.shark_datasets.name}</h3>
+    <p>
+      The visualisation uses the Australian Shark-Incident Dataset <a
+        href="https://www.taronga.org.au/wildlife-and-conservation/conservation-and-science-programs/behavioural-ecology/australia-shark-incident-database"
+        target="_blank"
+        class="text-subtext">(Taronga Conservation Society Australia, 2022)</a
+      >
+    </p>
+    <p>
+      The charts were created using Vega-Lite, with reference to Vega-Lite
+      examples and Studio code as a base. The website and layout was coded in
+      HTML and CSS. TopoJSON file for Australian states by Abdiel Oluyomi
+      <a href="https://github.com/alwaysblazing/Australia-State-TopoJson-MapChart" target="_blank" class="text-subtext">(alwaysblazing, 2017)</a>.
+    </p>
+    <p>
+      The cleaning process involved:
+      <ol class="flex flex-col gap-1 pb-4">
+        <li>Removing empty values</li>
+        <li>Removing values with coordinates too far from Australia</li>
+        <li>Adjusting column names with underscores (e.g. Shark.common.name → Shark_common_name)</li>
+      </ol>
+    </p>
+    <p>Further, custom .csv files were made on states, and percentage values for the map and radial chart for annotation purposes.</p>
+  </section>
+
+  <section>
+    <h3 id={sections.shark_why_how.id}>{sections.shark_why_how.name}</h3>
+    <h4>Distribution of shark-bite incidents in Australia</h4>
+    <p>
+      A proportional symbol map was chosen to visualise the distribution of shark-bite incidents across Australia, due to it displaying 
+      raw ‘counts’ of shark-bite incidents. It was chosen instead of a dot map, as more information could be conveyed by having the size 
+      channel encoded based on the number of sharks present during the incident.
+    </p>
+    <ImageBlock 
+      source={mapImg}
+      alt="Proportional map visualisation of the distribution of Australian shark-bite incidents 1803-2022, including filtering options"
+      caption="Proportional map visualisation of the distribution of Australian shark-bite incidents 1803-2022, including filtering options"
+    />
+
+    <h4>Trend of shark-bite incidents</h4>
+    <p>
+      A bar and multi-line combination chart was chosen, as it allowed for comparison between uninjured, injured and fatal incidents, as well 
+      as display the context shown through the ‘total incidents’ bar chart. This was chosen over other idioms, such as a stacked area chart and 
+      stacked bar, which did not allow for the same point of comparison.
+    </p>
+    <ImageBlock 
+      source={barLineImg}
+      alt="Combination (bar and multi-line) visualisation of the trend of shark-bite incidents"
+      caption="Combination (bar and multi-line) visualisation of the trend of shark-bite incidents"
+    />
+
+    <h4>Top 5 perpetrators of shark-bite incidents</h4>
+    <p>
+      A stacked bar idiom was chosen as it not only allowed sharks to be ranked by their total incidents, it also displayed the distribution of 
+      incidents based on injury level, so that viewers had the option to (1) compare between sharks, (2) compare between injury level within sharks, 
+      or (3) compare between injury levels between sharks.
+    </p>
+    <ImageBlock 
+      source={stackedBarImg}
+      alt="Stacked bar chart, ranking sharks based on incidents, as well as showing distribution of fatal, injured and uninjured incidents"
+      caption="Stacked bar chart, ranking sharks based on incidents, as well as showing distribution of fatal, injured and uninjured incidents"
+    />
+
+    <h4>Timing of shark-bite incidents</h4>
+    <p>
+      A table bubble plot idiom was chosen over options like the heat map, as it also incorporated a size channel along with colour to indicate the number 
+      of incidents within the month. Additionally, this number is supported by text annotations.
+    </p>
+    <ImageBlock 
+      source={bubbleImg}
+      alt="Table bubble plot displaying the number of shark-bite incidents per month, sorted by the top 5 sharks"
+      caption="Table bubble plot displaying the number of shark-bite incidents per month, sorted by the top 5 sharks"
+    />
+
+    <h4>Victim activity during time of incident</h4>
+    <p>
+      A radial plot idiom chosen so viewers could compare the relative sizes of the activity with one another, to get the sense of the dominating victim 
+      activity recorded. This was supported by the size channel, where the viewer can gain this information at a glance, compared to idioms like pie and
+      donut charts.
+    </p>
+    <ImageBlock 
+      source={radialImg}
+      alt="Radial plot displaying victim activity during the incident"
+      caption="Radial plot displaying victim activity during the incident"
+    />
+  </section>
+
+  <Divider />
+
+  <OtherProjects
+    buttonId={vocabForest.cardId}
+    title={vocabForest.title}
+    subtitle={vocabForest.subtitle}
+  />
 </CaseStudy>
 
+<script>
+  const handleClick = (destination: string) => {
+    window.location.href = destination;
+  };
+
+  document
+    .getElementById("vocab-forest-card")
+    ?.addEventListener("click", () => {
+      handleClick("/vocab-forest");
+    });
+</script>
+
 <style>
-  
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+
   h2 {
     font-family: var(--font-sans);
-    font-weight: var(--font-weight-medium);
+    font-weight: 500;
     font-size: var(--text-xl);
     line-height: var(--text-xl--line-height);
     color: var(--color-text);
+    padding-top: calc(var(--spacing) * 4);
     padding-bottom: calc(var(--spacing) * 2);
-    padding-top: calc(var(--spacing) * 6);
   }
 
   h3 {
     font-family: var(--font-sans);
-    font-weight: var(--font-weight-medium);
+    font-weight: 500;
     font-size: var(--text-lg);
     line-height: var(--text-lg--line-height);
     color: var(--color-text);
+    padding-top: calc(var(--spacing) * 4);
     padding-bottom: calc(var(--spacing) * 2);
-    padding-top: calc(var(--spacing) * 6);
+  }
+
+  h4 {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--text-md);
+    line-height: var(--text-md--line-height);
+    color: var(--color-text);
+    padding-top: calc(var(--spacing) * 4);
+    padding-bottom: calc(var(--spacing) * 2);
   }
 
   p {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    padding-bottom: calc(var(--spacing) * 4);
+  }
+
+  ol {
+    display: block;
+    list-style-type: disc;
+    padding-inline-start: 20px;
     font-family: var(--font-sans);
     color: var(--color-text);
     font-size: var(--text-base);

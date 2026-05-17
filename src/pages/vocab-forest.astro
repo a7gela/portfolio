@@ -4,24 +4,41 @@ import TableItem from "../components/TableItem.astro";
 import Divider from "../components/Divider.astro";
 import Contents from "../components/Contents.astro";
 import SubContents from "../components/SubContents.astro";
-import { vocabForest } from "../data/projects.js";
+import ImageBlock from "../components/ImageBlock.astro";
+import OtherProjects from "../components/OtherProjects.astro";
+
+import { vocabForest, dataVis } from "../data/projects.js";
+import homepageImg from "../assets/vocab-forest/vocab-forest-homepage.webp";
+import componentsImg from "../assets/vocab-forest/light/components.webp";
+import databaseImg from "../assets/vocab-forest/light/database.webp";
+import feedbackScreensImg from "../assets/vocab-forest/light/feedback-screens.webp";
+import lilacImg from "../assets/vocab-forest/light/lilac.webp";
+import mobileImg from "../assets/vocab-forest/light/mobile.webp";
+import oliveImg from "../assets/vocab-forest/light/olive.webp";
+import settingsImg from "../assets/vocab-forest/light/settings.webp";
+import userflowImg from "../assets/vocab-forest/light/userflow.webp";
 
 import { MoveDown } from "@lucide/astro";
 
 const sections = {
-  overview: { id: "#overview", name: "Overview" },
-  design_process: { id: "#design-process", name: "Design process" },
-  problem_space: { id: "#problem-space", name: "Problem space" },
-  explorations: { id: "#explorations", name: "Explorations" },
+  overview: { id: "overview", name: "Overview" },
+  design_process: { id: "design-process", name: "Design process" },
+  problem_space: { id: "problem-space", name: "Problem space" },
+  explorations: { id: "explorations", name: "Explorations" },
   wireframe_and_design_system: {
-    id: "#wireframe-and-design-system",
+    id: "wireframe-and-design-system",
     name: "Wireframe and design system",
   },
   final_design_and_insights: {
-    id: "#final-design-and-insights",
+    id: "final-design-and-insights",
     name: "Final design and insights",
   },
-  dev_process: { id: "#dev-process", name: "Dev process" },
+  dev_process: { id: "dev-process", name: "Development process" },
+  database_design: { id: "database-design", name: "Database design" },
+  features_and_implementations: {
+    id: "features-and-implementations",
+    name: "Features and implementations",
+  },
 };
 ---
 
@@ -33,23 +50,33 @@ const sections = {
 >
   <!-- Table of contents -->
   <Contents slot="TableOfContents">
-    <a href={sections.overview.id}>{sections.overview.name}</a>
-    <a href={sections.design_process.id}>{sections.design_process.name}</a>
+    <a href={"#" + sections.overview.id}>{sections.overview.name}</a>
+    <a href={"#" + sections.design_process.id}>{sections.design_process.name}</a
+    >
 
     <!-- Design process toc -->
     <SubContents>
-      <a href={sections.problem_space.id}>{sections.problem_space.name}</a>
-      <a href={sections.explorations.id}>{sections.explorations.name}</a>
-      <a href={sections.wireframe_and_design_system.id}
+      <a href={"#" + sections.problem_space.id}>{sections.problem_space.name}</a
+      >
+      <a href={"#" + sections.explorations.id}>{sections.explorations.name}</a>
+      <a href={"#" + sections.wireframe_and_design_system.id}
         >{sections.wireframe_and_design_system.name}</a
       >
-      <a href={sections.final_design_and_insights.id}
+      <a href={"#" + sections.final_design_and_insights.id}
         >{sections.final_design_and_insights.name}</a
       >
     </SubContents>
 
     <!-- Dev process toc -->
-    <a href={sections.dev_process.id}>{sections.dev_process.name}</a>
+    <a href={"#" + sections.dev_process.id}>{sections.dev_process.name}</a>
+    <SubContents>
+      <a href={"#" + sections.features_and_implementations.id}
+        >{sections.features_and_implementations.name}</a
+      >
+      <a href={"#" + sections.database_design.id}
+        >{sections.database_design.name}</a
+      >
+    </SubContents>
   </Contents>
 
   <!-- Overview -->
@@ -61,14 +88,16 @@ const sections = {
       this was a personal project that I worked on with a friend with the goal
       of learning more about full stack development.
     </p>
-    <div class="flex flex-col sm:flex-row sm:gap-2 gap-4 sm:justify-between pb-4">
+    <div class="grid sm:grid-cols-3 grid-cols-1 sm:gap-2 gap-4 pb-4">
       <TableItem item="Role">
         Full Stack Developer<br />
         UI/UX Designer
       </TableItem>
       <TableItem item="Team">
-        Nadzmi Ag Thomas<br />
-        Angela Ho
+        <a href="https://github.com/nadzmi27" target="_blank"
+          >Nadzmi Ag Thomas</a
+        >
+        Angela Ho (me!)
       </TableItem>
       <TableItem item="Timeline">
         March-April 2026<br />
@@ -83,7 +112,7 @@ const sections = {
   <section>
     <h2 id={sections.design_process.id}>{sections.design_process.name}</h2>
     <a
-      href={sections.dev_process.id}
+      href={"#" + sections.dev_process.id}
       class="text-subtext cursor-pointer flex flex-row gap-0.5 items-center pb-4"
     >
       Skip to read about the Dev process
@@ -100,7 +129,7 @@ const sections = {
       reading. I found existing methods of recording vocabulary to be a hassle,
       for example:
     </p>
-    <div class="flex flex-col sm:flex-row sm:gap-2 gap-4 sm:justify-between pb-4">
+    <div class="grid sm:grid-cols-3 grid-cols-1 sm:gap-2 gap-4 pb-4">
       <TableItem item="Using pen and paper">
         <ol>
           <li>Interrupted my reading</li>
@@ -148,8 +177,145 @@ const sections = {
       information that was important to me - definitions (including all
       variations), synonyms, antonyms, and a section for notes.
     </p>
+    <ImageBlock 
+      source={lilacImg} 
+      alt="Screenshot of my initial explorations on Figma." 
+      caption="Initial ideas, showing the card gallery layout, and expanded sidebar on the right-side split by definition, synonyms, antonyms and notes. I played with the idea of having a sidebar on the left-side for word lists, but ditched it in the final design because it made the centre content too narrow." 
+    />
   </section>
+
+  <section>
+    <h3 id={sections.wireframe_and_design_system.id}>
+      {sections.wireframe_and_design_system.name}
+    </h3>
+    <p>
+      As I wanted to focus on programming, I created high-fidelity wireframes of
+      only the main home page & the element interactions within. It was enough
+      to give me a rough idea of what the final product would look like. At this
+      stage I decided on the name “Vocab Forest”, using green tones and serif
+      headings to give a woody/whimsy/bookish vibe.
+    </p>
+    <ImageBlock 
+      source={oliveImg}
+      alt="Screenshot of the final Figma designs before I moved onto development."
+      caption="The final Figma wireframes I created before going into development. I was still exploring functionalities and styles at this point, but it was enough for me to get started."
+    />
+    <ImageBlock
+      source={componentsImg}
+      alt="Screenshot of the Figma components, colours, and typography that I used for the Figma wireframe."
+      caption="The components sheet and text + colour styles I used for the wireframe. I used Alegreya for headings and Inter for body text."
+    />
+  </section>
+
+  <section>
+    <h3 id={sections.final_design_and_insights.id}>
+      {sections.final_design_and_insights.name}
+    </h3>
+    <p>
+      Adjustments were made during development. I added new screens - mobile
+      views, empty states, error flags and screens, feedback messages, dropdowns
+      - and modified the design system to what it looks like now.
+    </p>
+    <ImageBlock 
+      source={homepageImg}
+      alt="Screenshot of Vocab Forest's homepage."
+      caption="The homepage on desktop. The colour scheme was changed to provide less of contrast between card & background for a more relaxing experience. Buttons were changed to look more interactable rather than just text. When developing, we also found the API (our data source) provided simplified definitions, as well as the full definitions. We displayed simplified definitions on cards so users could capture more information at-a-glance, while having the option to expand on definitions if needed."
+    />
+    <ImageBlock 
+      source={mobileImg}
+      alt="Screenshot of different Vocab Forest layouts on mobile."
+      caption="Mobile layouts of the title screen, login, home screen and sidebar (a popup) - responsiveness was an important consideration."
+    />
+    <ImageBlock 
+      source={userflowImg}
+      alt="Vocab Forest's forgot password user flow."
+      caption="Forgot password user flow. It was designed to provide user feedback + autonomy at every step of the flow. For instance, every screen has a back button (← login) where the user can exit out of the flow at any time. The “check your inbox” screen is informative, and gives users options on what to do next."
+    />
+    <ImageBlock 
+      source={feedbackScreensImg}
+      alt="Screenshot of Vocab Forest's layout, displaying the different forms of feedback."
+      caption="Other forms of feedback in Vocab Forest: no list / no words message, toast message, 404 page not found designs."
+    />
+    <ImageBlock
+      source={settingsImg}
+      alt="Screenshot of the settings modal."
+      caption="Settings modal design and theme selection."
+    />
+  </section>
+
+  <Divider />
+
+  <!-- Development process -->
+  <section>
+    <h2 id={sections.dev_process.id}>{sections.dev_process.name}</h2>
+  </section>
+
+  <!-- Features and implementations -->
+  <section>
+    <h3 id={sections.features_and_implementations.id}>
+      {sections.features_and_implementations.name}
+    </h3>
+    <div class="flex flex-col gap-4 pb-4">
+      <TableItem item="Search and save vocabulary in lists">
+        Pulling data from Merriam-Webster Dictionary and Merriam-Webster
+        Thesaurus APIs, users can search and save words, definitions, synonyms
+        and antonyms into lists. Users can also add their custom note to a saved
+        word, which uses debouncing to auto-save when it detects updates.
+      </TableItem>
+      <TableItem item="Expanding on a definition">
+        Users can cycle through variations of definitions, listen to variant
+        pronunciations, view synonyms and antonyms, and leave notes on saved
+        vocabulary in the expanded view.
+      </TableItem>
+      <TableItem item="Sort by options">
+        Through indexing and debouncing, users can sort words alphabetically, by
+        the date added, or set their own custom sort via drag on drop. The drag
+        and drop uses dnd kit's useSortable hook.
+      </TableItem>
+      <TableItem item="Suggested search results">
+        When searching for a word, users receive suggested results. This was
+        implemented using data from Moby Word Lists API, and adding in or
+        deleting suggested words based on usage history to account for differences
+        between Merriam-Webster and Moby Word List APIs.
+      </TableItem>
+      <TableItem item="User authentication and RLS policy implmentation">
+        Login via email, google account, or as a guest. Auth processes include
+        options to: reset data, delete account, change password, and change
+        emails. User access level to backend data is restricted on the
+        row-level.
+      </TableItem>
+      <TableItem item="Custom theming and media playback">
+        Select from multiple colour theme and background music options. Settings
+        are saved and carried over to future sessions via useContext and
+        useEffect.
+      </TableItem>
+    </div>
+  </section>
+
+  <!-- Database design -->
+  <section>
+    <h3 id={sections.database_design.id}>{sections.database_design.name}</h3>
+    <ImageBlock 
+      source={databaseImg}
+      alt="Screenshot of Vocab Forest's database design on Supabase."
+      caption="Vocab Forest's database design."
+    />
+  </section>
+
+  <Divider />
+
+  <OtherProjects buttonId={dataVis.cardId} title={dataVis.title} subtitle={dataVis.subtitle} />
 </CaseStudy>
+
+<script>
+  const handleClick = (destination: string) => {
+    window.location.href = destination;
+  };
+
+  document.getElementById("data-vis-card")?.addEventListener("click", () => {
+    handleClick("/data-vis");
+  });
+</script>
 
 <style>
   section {
@@ -159,7 +325,7 @@ const sections = {
 
   h2 {
     font-family: var(--font-sans);
-    font-weight: var(--font-weight-medium);
+    font-weight: 500;
     font-size: var(--text-xl);
     line-height: var(--text-xl--line-height);
     color: var(--color-text);
@@ -169,7 +335,7 @@ const sections = {
 
   h3 {
     font-family: var(--font-sans);
-    font-weight: var(--font-weight-medium);
+    font-weight: 500;
     font-size: var(--text-lg);
     line-height: var(--text-lg--line-height);
     color: var(--color-text);
@@ -182,7 +348,7 @@ const sections = {
     color: var(--color-text);
     font-size: var(--text-base);
     line-height: var(--text-base--line-height);
-    padding-bottom: calc(var(--spacing) * 4)
+    padding-bottom: calc(var(--spacing) * 4);
   }
 
   ol {

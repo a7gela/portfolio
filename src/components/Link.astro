@@ -4,7 +4,6 @@ const { name, link } = Astro.props;
 ---
 
 <a
-  id="link"
   href={link}
   target="_blank"
   class="flex flex-row items-center font-sans text-text text-base hover:text-subtext w-fit gap-0.5"
@@ -14,7 +13,5 @@ const { name, link } = Astro.props;
 </a>
 
 <script>
-  document.getElementById("link")?.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
+  
 </script>
