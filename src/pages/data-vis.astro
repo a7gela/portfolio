@@ -9,6 +9,7 @@ import Link from "../components/Link.astro";
 import ImageBlock from "../components/ImageBlock.astro";
 
 import { dataVis, vocabForest } from "../data/projects.js";
+import dataVisHeaderImg from "../assets/data-vis/data-vis-card-image.webp";
 import barImg from "../assets/data-vis/aus-diet/bar.webp";
 import donutImg from "../assets/data-vis/aus-diet/donut.webp";
 import sankeyImg from "../assets/data-vis/aus-diet/sankey.webp";
@@ -54,7 +55,8 @@ const sections = {
 ---
 
 <CaseStudy
-  image={dataVis.image}
+  imageSource={dataVisHeaderImg},
+  imageAlt={dataVis.imageAlt},
   title={dataVis.title}
   links={dataVis.links}
   tags={dataVis.tags}

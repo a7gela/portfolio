@@ -5,10 +5,12 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import contact from "../data/contact.js";
 
-import { projects } from "../data/projects.js";
+import { vocabForest, dataVis } from "../data/projects.js";
 import asciiLight from "../assets/cat-ascii-light.webp";
 import asciiDark from "../assets/cat-ascii-dark.webp";
 
+import vocabForestCardImg from "../assets/vocab-forest/vocab-forest-homepage.webp";
+import dataVisCardImg from "../assets/data-vis/data-vis-card-image.webp";
 ---
 
 <Layout>
@@ -36,18 +38,65 @@ import asciiDark from "../assets/cat-ascii-dark.webp";
         ))
       }
     </div>
-    <Image src={asciiLight} alt="ASCII art of a cat" class="dark:hidden w-fit h-30 ml-20 mr-6 lg:mr:30" />
-    <Image src={asciiDark} alt="ASCII art of a cat" class="hidden dark:block w-fit h-30 ml-20 mr-6 lg:mr:30" />
+    <Image
+      src={asciiLight}
+      alt="ASCII art of a cat"
+      class="dark:hidden w-fit h-30 ml-20 mr-6 lg:mr:30"
+      loading="eager"
+    />
+    <Image
+      src={asciiDark}
+      alt="ASCII art of a cat"
+      class="hidden dark:block w-fit h-30 ml-20 mr-6 lg:mr:30"
+      loading="eager"
+    />
   </div>
 
   <p class="font-sans text-text text-base sm:pt-28 pt-20 pb-4">
     Some of my projects below :) Click to learn more.
   </p>
-  
 
   <!-- Projects section -->
   <div class="grid md:grid-cols-2 gap-6">
-    {
+    <div id={vocabForest.cardId}>
+      <Card
+        links={vocabForest.links}
+        ,
+        linkId={vocabForest.linkId}
+        ,
+        imageSource={vocabForestCardImg}
+        ,
+        imageAlt={vocabForest.imageAlt}
+        ,
+        title={vocabForest.title}
+        ,
+        subtitle={vocabForest.subtitle}
+        ,
+        description={vocabForest.description}
+        ,
+        tags={vocabForest.tags}
+      />
+    </div>
+    <div id={dataVis.cardId}>
+      <Card
+        links={dataVis.links}
+        ,
+        linkId={dataVis.linkId}
+        ,
+        imageSource={dataVisCardImg}
+        ,
+        imageAlt={dataVis.imageAlt}
+        ,
+        title={dataVis.title}
+        ,
+        subtitle={dataVis.subtitle}
+        ,
+        description={dataVis.description}
+        ,
+        tags={dataVis.tags}
+      />
+    </div>
+    <!-- {
       projects.map((project) => (
         <div id={project.cardId}>
           <Card 
@@ -61,7 +110,7 @@ import asciiDark from "../assets/cat-ascii-dark.webp";
           />
         </div>
       ))
-    }
+    } -->
   </div>
 </Layout>
 
@@ -80,12 +129,13 @@ import asciiDark from "../assets/cat-ascii-dark.webp";
     handleClick("/portfolio/data-vis");
   });
 
-  document.getElementById("vocabForestLinks")?.addEventListener("click", (e) => {
-    e.stopPropagation();
-  });
+  document
+    .getElementById("vocabForestLinks")
+    ?.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
 
   document.getElementById("dataVisLinks")?.addEventListener("click", (e) => {
     e.stopPropagation();
   });
-
 </script>

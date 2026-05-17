@@ -1,46 +1,53 @@
 ---
+import { Image } from "astro:assets";
+
 import Layout from "../layouts/Layout.astro";
 import Link from "../components/Link.astro";
 import Tag from "../components/Tag.astro";
 import Divider from "../components/Divider.astro";
 
-const { image, title, links, tags } = Astro.props;
+const { imageSource, imageAlt, title, links, tags } = Astro.props;
 ---
 
 <Layout>
   <div class="flex flex-row justify-center lg:justify-start">
     <!-- Table of contents -->
     <slot name="TableOfContents" />
-    
-      <div class="flex flex-col items-center">
-        <!-- Header image -->
-        <div
-          class="bg-card rounded-sm w-full md:w-175 h-71.25 flex justify-center items-center"
-        >
-          <img src={image.source} alt={image.alt} class="rounded-sm object-scale-down h-45" />
-        </div>
 
-        <!-- Case study header elements: title, links, tags -->
-        <div class="flex flex-col w-full sm:w-149.25">
-          <h1 class="font-sans text-text text-3xl pt-6 pb-2">{title}</h1>
-
-          <span class="flex flex-row flex-wrap gap-2 py-1.5">
-            {
-              links.map(({ name, link }: { name: string; link: string }) => {
-                return <Link name={name} link={link} />;
-              })
-            }
-          </span>
-
-          <span class="flex flex-row flex-wrap gap-1 py-2">
-            {tags.map((tag: string) => <Tag name={tag} />)}
-          </span>
-
-          <Divider />
-
-          <!-- Slot in contents of case study -->
-          <slot />
-        </div>
+    <div class="flex flex-col items-center">
+      <!-- Header image -->
+      <div
+        class="bg-card rounded-sm w-full md:w-175 h-71.25 flex justify-center items-center"
+      >
+        <Image
+          src={imageSource}
+          alt={imageAlt}
+          class="rounded-sm object-scale-down h-45"
+          loading="eager"
+        />
       </div>
+
+      <!-- Case study header elements: title, links, tags -->
+      <div class="flex flex-col w-full sm:w-149.25">
+        <h1 class="font-sans text-text text-3xl pt-6 pb-2">{title}</h1>
+
+        <span class="flex flex-row flex-wrap gap-2 py-1.5">
+          {
+            links.map(({ name, link }: { name: string; link: string }) => {
+              return <Link name={name} link={link} />;
+            })
+          }
+        </span>
+
+        <span class="flex flex-row flex-wrap gap-1 py-2">
+          {tags.map((tag: string) => <Tag name={tag} />)}
+        </span>
+
+        <Divider />
+
+        <!-- Slot in contents of case study -->
+        <slot />
+      </div>
+    </div>
   </div>
 </Layout>
