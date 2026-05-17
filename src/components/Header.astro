@@ -1,7 +1,5 @@
 ---
-import { Moon } from "@lucide/astro";
-import { Sun } from "@lucide/astro";
-
+import ThemeToggle from "../components/ThemeToggle.astro";
 import contact from "../data/contact.js";
 ---
 
@@ -17,11 +15,7 @@ import contact from "../data/contact.js";
         </a>
       ))
     }
-    <button id="themeToggle" class="p-2 cursor-pointer hover:text-subtext">
-      <span class="moon">
-        <Moon size={18} stroke-width={1.7} />
-      </span>
-    </button>
+    <ThemeToggle />
   </div>
 </header>
 

@@ -18,6 +18,15 @@ import oliveImg from "../assets/vocab-forest/light/olive.webp";
 import settingsImg from "../assets/vocab-forest/light/settings.webp";
 import userflowImg from "../assets/vocab-forest/light/userflow.webp";
 
+import componentsImgDark from "../assets/vocab-forest/dark/components.webp";
+import databaseImgDark from "../assets/vocab-forest/dark/database.webp";
+import feedbackScreensImgDark from "../assets/vocab-forest/dark/feedback-screens.webp";
+import lilacImgDark from "../assets/vocab-forest/dark/lilac.webp";
+import mobileImgDark from "../assets/vocab-forest/dark/mobile.webp";
+import oliveImgDark from "../assets/vocab-forest/dark/olive.webp";
+import settingsImgDark from "../assets/vocab-forest/dark/settings.webp";
+import userflowImgDark from "../assets/vocab-forest/dark/userflow.webp";
+
 import { MoveDown } from "@lucide/astro";
 
 const sections = {
@@ -177,11 +186,20 @@ const sections = {
       information that was important to me - definitions (including all
       variations), synonyms, antonyms, and a section for notes.
     </p>
-    <ImageBlock 
-      source={lilacImg} 
-      alt="Screenshot of my initial explorations on Figma." 
-      caption="Initial ideas, showing the card gallery layout, and expanded sidebar on the right-side split by definition, synonyms, antonyms and notes. I played with the idea of having a sidebar on the left-side for word lists, but ditched it in the final design because it made the centre content too narrow." 
-    />
+    <span class="dark:hidden">
+      <ImageBlock
+        source={lilacImg}
+        alt="Screenshot of my initial explorations on Figma."
+        caption="Initial ideas, showing the card gallery layout, and expanded sidebar on the right-side split by definition, synonyms, antonyms and notes. I played with the idea of having a sidebar on the left-side for word lists, but ditched it in the final design because it made the centre content too narrow."
+      />
+    </span>
+    <span class="hidden dark:block">
+      <ImageBlock
+        source={lilacImgDark}
+        alt="Screenshot of my initial explorations on Figma."
+        caption="Initial ideas, showing the card gallery layout, and expanded sidebar on the right-side split by definition, synonyms, antonyms and notes. I played with the idea of having a sidebar on the left-side for word lists, but ditched it in the final design because it made the centre content too narrow."
+      />
+    </span>
   </section>
 
   <section>
@@ -195,16 +213,30 @@ const sections = {
       stage I decided on the name “Vocab Forest”, using green tones and serif
       headings to give a woody/whimsy/bookish vibe.
     </p>
-    <ImageBlock 
-      source={oliveImg}
-      alt="Screenshot of the final Figma designs before I moved onto development."
-      caption="The final Figma wireframes I created before going into development. I was still exploring functionalities and styles at this point, but it was enough for me to get started."
-    />
-    <ImageBlock
-      source={componentsImg}
-      alt="Screenshot of the Figma components, colours, and typography that I used for the Figma wireframe."
-      caption="The components sheet and text + colour styles I used for the wireframe. I used Alegreya for headings and Inter for body text."
-    />
+    <span class="dark:hidden">
+      <ImageBlock
+        source={oliveImg}
+        alt="Screenshot of the final Figma designs before I moved onto development."
+        caption="The final Figma wireframes I created before going into development. I was still exploring functionalities and styles at this point, but it was enough for me to get started."
+      />
+      <ImageBlock
+        source={componentsImg}
+        alt="Screenshot of the Figma components, colours, and typography that I used for the Figma wireframe."
+        caption="The components sheet and text + colour styles I used for the wireframe. I used Alegreya for headings and Inter for body text."
+      />
+    </span>
+    <span class="hidden dark:block">
+      <ImageBlock
+        source={oliveImgDark}
+        alt="Screenshot of the final Figma designs before I moved onto development."
+        caption="The final Figma wireframes I created before going into development. I was still exploring functionalities and styles at this point, but it was enough for me to get started."
+      />
+      <ImageBlock
+        source={componentsImgDark}
+        alt="Screenshot of the Figma components, colours, and typography that I used for the Figma wireframe."
+        caption="The components sheet and text + colour styles I used for the wireframe. I used Alegreya for headings and Inter for body text."
+      />
+    </span>
   </section>
 
   <section>
@@ -216,31 +248,55 @@ const sections = {
       views, empty states, error flags and screens, feedback messages, dropdowns
       - and modified the design system to what it looks like now.
     </p>
-    <ImageBlock 
+    <ImageBlock
       source={homepageImg}
       alt="Screenshot of Vocab Forest's homepage."
       caption="The homepage on desktop. The colour scheme was changed to provide less of contrast between card & background for a more relaxing experience. Buttons were changed to look more interactable rather than just text. When developing, we also found the API (our data source) provided simplified definitions, as well as the full definitions. We displayed simplified definitions on cards so users could capture more information at-a-glance, while having the option to expand on definitions if needed."
     />
-    <ImageBlock 
-      source={mobileImg}
-      alt="Screenshot of different Vocab Forest layouts on mobile."
-      caption="Mobile layouts of the title screen, login, home screen and sidebar (a popup) - responsiveness was an important consideration."
-    />
-    <ImageBlock 
-      source={userflowImg}
-      alt="Vocab Forest's forgot password user flow."
-      caption="Forgot password user flow. It was designed to provide user feedback + autonomy at every step of the flow. For instance, every screen has a back button (← login) where the user can exit out of the flow at any time. The “check your inbox” screen is informative, and gives users options on what to do next."
-    />
-    <ImageBlock 
-      source={feedbackScreensImg}
-      alt="Screenshot of Vocab Forest's layout, displaying the different forms of feedback."
-      caption="Other forms of feedback in Vocab Forest: no list / no words message, toast message, 404 page not found designs."
-    />
-    <ImageBlock
-      source={settingsImg}
-      alt="Screenshot of the settings modal."
-      caption="Settings modal design and theme selection."
-    />
+    <span class="dark:hidden">
+      <ImageBlock
+        source={mobileImg}
+        alt="Screenshot of different Vocab Forest layouts on mobile."
+        caption="Mobile layouts of the title screen, login, home screen and sidebar (a popup) - responsiveness was an important consideration."
+      />
+      <ImageBlock
+        source={userflowImg}
+        alt="Vocab Forest's forgot password user flow."
+        caption="Forgot password user flow. It was designed to provide user feedback + autonomy at every step of the flow. For instance, every screen has a back button (← login) where the user can exit out of the flow at any time. The “check your inbox” screen is informative, and gives users options on what to do next."
+      />
+      <ImageBlock
+        source={feedbackScreensImg}
+        alt="Screenshot of Vocab Forest's layout, displaying the different forms of feedback."
+        caption="Other forms of feedback in Vocab Forest: no list / no words message, toast message, 404 page not found designs."
+      />
+      <ImageBlock
+        source={settingsImg}
+        alt="Screenshot of the settings modal."
+        caption="Settings modal design and theme selection."
+      />
+    </span>
+    <span class="hidden dark:block">
+      <ImageBlock
+        source={mobileImgDark}
+        alt="Screenshot of different Vocab Forest layouts on mobile."
+        caption="Mobile layouts of the title screen, login, home screen and sidebar (a popup) - responsiveness was an important consideration."
+      />
+      <ImageBlock
+        source={userflowImgDark}
+        alt="Vocab Forest's forgot password user flow."
+        caption="Forgot password user flow. It was designed to provide user feedback + autonomy at every step of the flow. For instance, every screen has a back button (← login) where the user can exit out of the flow at any time. The “check your inbox” screen is informative, and gives users options on what to do next."
+      />
+      <ImageBlock
+        source={feedbackScreensImgDark}
+        alt="Screenshot of Vocab Forest's layout, displaying the different forms of feedback."
+        caption="Other forms of feedback in Vocab Forest: no list / no words message, toast message, 404 page not found designs."
+      />
+      <ImageBlock
+        source={settingsImgDark}
+        alt="Screenshot of the settings modal."
+        caption="Settings modal design and theme selection."
+      />
+    </span>
   </section>
 
   <Divider />
@@ -275,8 +331,8 @@ const sections = {
       <TableItem item="Suggested search results">
         When searching for a word, users receive suggested results. This was
         implemented using data from Moby Word Lists API, and adding in or
-        deleting suggested words based on usage history to account for differences
-        between Merriam-Webster and Moby Word List APIs.
+        deleting suggested words based on usage history to account for
+        differences between Merriam-Webster and Moby Word List APIs.
       </TableItem>
       <TableItem item="User authentication and RLS policy implmentation">
         Login via email, google account, or as a guest. Auth processes include
@@ -295,16 +351,29 @@ const sections = {
   <!-- Database design -->
   <section>
     <h3 id={sections.database_design.id}>{sections.database_design.name}</h3>
-    <ImageBlock 
-      source={databaseImg}
-      alt="Screenshot of Vocab Forest's database design on Supabase."
-      caption="Vocab Forest's database design."
-    />
+    <span class="dark:hidden">
+      <ImageBlock
+        source={databaseImg}
+        alt="Screenshot of Vocab Forest's database design on Supabase."
+        caption="Vocab Forest's database design."
+      />
+    </span>
+    <span class="hidden dark:block">
+      <ImageBlock
+        source={databaseImgDark}
+        alt="Screenshot of Vocab Forest's database design on Supabase."
+        caption="Vocab Forest's database design."
+      />
+    </span>
   </section>
 
   <Divider />
 
-  <OtherProjects buttonId={dataVis.cardId} title={dataVis.title} subtitle={dataVis.subtitle} />
+  <OtherProjects
+    buttonId={dataVis.cardId}
+    title={dataVis.title}
+    subtitle={dataVis.subtitle}
+  />
 </CaseStudy>
 
 <script>

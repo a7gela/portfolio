@@ -1,8 +1,14 @@
 ---
+import { Image } from "astro:assets";
+
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import contact from "../data/contact.js";
+
 import { projects } from "../data/projects.js";
+import asciiLight from "../assets/cat-ascii-light.webp";
+import asciiDark from "../assets/cat-ascii-dark.webp";
+
 ---
 
 <Layout>
@@ -30,11 +36,8 @@ import { projects } from "../data/projects.js";
         ))
       }
     </div>
-      <img
-        src="/src/assets/cat-ascii-light.webp"
-        alt="ASCII art of a cat"
-        class="h-30 ml-20 mr-6 lg:mr-30"
-      />
+    <Image src={asciiLight} alt="ASCII art of a cat" class="dark:hidden w-fit h-30 ml-20 mr-6 lg:mr:30" />
+    <Image src={asciiDark} alt="ASCII art of a cat" class="hidden dark:block w-fit h-30 ml-20 mr-6 lg:mr:30" />
   </div>
 
   <p class="font-sans text-text text-base sm:pt-28 pt-20 pb-4">

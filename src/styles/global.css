@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 * {
   scrollbar-width: thin;
@@ -27,7 +27,7 @@ html {
   --color-scrollbar: #cccccc;
 }
 
-[data-theme="dark"] {
+.dark {
   /* dark theme */
   --color-background: #121212;
   --color-card: #1c1c1c;
