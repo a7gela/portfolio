@@ -17,7 +17,7 @@ const { imageSource, imageAlt, title, links, tags } = Astro.props;
     <div class="flex flex-col items-center">
       <!-- Header image -->
       <div
-        class="bg-card rounded-sm w-full md:w-175 h-71.25 flex justify-center items-center"
+        class="bg-card rounded-3xl w-full md:w-175 h-71.25 flex justify-center items-center"
       >
         <Image
           src={imageSource}
@@ -29,7 +29,7 @@ const { imageSource, imageAlt, title, links, tags } = Astro.props;
 
       <!-- Case study header elements: title, links, tags -->
       <div class="flex flex-col w-full sm:w-149.25">
-        <h1 class="font-sans text-text text-3xl pt-6 pb-2">{title}</h1>
+        <h1 class="font-serif text-text text-3xl pt-6 pb-2">{title}</h1>
 
         <span class="flex flex-row flex-wrap gap-2 py-1.5">
           {

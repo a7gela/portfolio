@@ -1,20 +1,36 @@
 ---
+import { Image } from "astro:assets";
+
 import ThemeToggle from "../components/ThemeToggle.astro";
-import contact from "../data/contact.js";
+
+import { email, github } from "../data/contact.js";
+import iconDark from "../assets/icon-dark.svg";
+import iconLight from "../assets/icon-light.svg";
 ---
 
 <header
-  class="sticky top-0 z-10 bg-background font-sans text-text text-base flex flex-row justify-between sm:px-8 px-4 py-4"
+  class="sticky top-0 z-10 bg-background font-sans text-text text-base flex flex-row justify-between items-center sm:px-8 px-4 py-4 ml-2"
 >
-  <a href="/portfolio" class="p-2 cursor-pointer hover:text-subtext">~/angela</a>
-  <div class="flex flex-row gap-6">
-    {
-      contact.map((c) => (
-        <a href={c.link} target="_blank" class="p-2 cursor-pointer hover:text-subtext">
-          {c.name}
-        </a>
-      ))
-    }
+  <button id="logomark" aria-label="Logo mark" class="cursor-pointer">
+    <Image
+      src={iconDark}
+      alt="Logo mark"
+      width={24}
+      height={24}
+      class="m-2 dark:hidden"
+    />
+    <Image
+      src={iconLight}
+      alt="Logo mark"
+      width={24}
+      height={24}
+      class="m-2 hidden dark:block"
+    />
+  </button>
+  <div class="flex flex-row sm:gap-4 gap-1">
+    <a href="/portfolio">Home</a>
+    <a href={email.link} target="_blank">Email</a>
+    <a href={github.link} target="_blank">GitHub</a>
     <ThemeToggle />
   </div>
 </header>
@@ -29,3 +45,13 @@ import contact from "../data/contact.js";
     color: var(--color-subtext);
   }
 </style>
+
+<script>
+  const handleClick = (destination: string) => {
+    window.location.href = destination;
+  };
+
+  document.getElementById("logomark")?.addEventListener("click", () => {
+    handleClick("/portfolio");
+  });
+</script>

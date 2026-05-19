@@ -1,14 +1,25 @@
 ---
-
+import { email, github } from "../data/contact.js";
 ---
 
 <footer
-  class="font-sans text-subtext text-sm flex sm:flex-row sm:justify-between flex-col items-center px-12 py-6 pt-20"
+  class="bg-footer text-footer-text w-full sm:mt-36 mt-24 flex justify-center dark:border-t border-scrollbar"
 >
-  <p>Thanks for dropping by!</p>
-  <p class="flex flex-row gap-1 items-center">
-    &copy <span id="copyright-year"></span> Angela Ho. All rights reserved.
-  </p>
+  <div class="max-w-7xl w-screen sm:px-12 px-6 sm:py-16 py-8 flex sm:flex-row flex-col sm:justify-between">
+    <div class="flex flex-col gap-4 items-start ">
+      <p class="font-serif text-4xl">angela ho.</p>
+      <p class="font-sans text-base">
+        &copy <span id="copyright-year"></span> Angela Ho. All rights reserved.
+      </p>
+    </div>
+    <div class="flex sm:flex-col flex-row font-sans text-base gap-0.5 sm:text-right pt-4 sm:pt-0 sm:items-end justify-between items-center">
+      <p class="font-serif text-lg">Get in touch</p>
+      <div class="flex sm:flex-col flex-row gap-4 sm:gap-1">
+        <a href={email.link} class="hover:text-footer-subtext cursor-pointer">Email</a>
+        <a href={github.link} class="hover:text-footer-subtext cursor-pointer">GitHub</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>
