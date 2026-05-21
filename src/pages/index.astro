@@ -6,25 +6,21 @@ import Card from "../components/Card.astro";
 import { email, github } from "../data/contact.js";
 
 import { vocabForest, dataVis } from "../data/projects.js";
-import asciiLight from "../assets/cat-ascii-light.webp";
-import asciiDark from "../assets/cat-ascii-dark.webp";
 
 import vocabForestCardImg from "../assets/vocab-forest/vocab-forest-homepage.webp";
 import dataVisCardImg from "../assets/data-vis/data-vis-card-image.webp";
 ---
 
 <Layout>
-  <!-- <div class="flex sm:flex-row flex-col sm:justify-between items-end"> -->
-    <!-- <div> -->
       <p class="font-sans text-subtext text-base pt-20">
         Open for work / Melbourne, Australia
       </p>
-      <h1 class="font-serif text-text sm:text-[26px]/[32px] text-[24px]/[28px] max-w-[654px] pt-4 pb-12">
+      <h1 class="font-serif text-text sm:text-[26px]/[32px] text-[24px]/[28px] max-w-[654px] pt-6 pb-12">
         Hey, I'm Angela! I'm a <span class="font-serif-italic">software developer</span>
         and <span class="font-serif-italic">designer</span> who's passionate about
         building thoughtful and human-centred experiences on the web.
       </h1>
-      <div class="flex flex-col gap-1 pb-16 sm:pb-0">
+      <div class="flex flex-col gap-1 pb-0">
         <p class="font-sans font-medium text-text text-base">
           Email:
           <a href={email.link} target="_blank" class="pl-1 font-normal cursor-pointer hover:text-subtext">
@@ -38,27 +34,11 @@ import dataVisCardImg from "../assets/data-vis/data-vis-card-image.webp";
           </a>
         </p>
       </div>
-    <!-- </div> -->
-    <!-- <Image
-      src={asciiLight}
-      alt="ASCII art of a cat"
-      class="dark:hidden w-fit h-30 ml-20 mr-6 lg:mr:30"
-      loading="eager"
-    />
-    <Image
-      src={asciiDark}
-      alt="ASCII art of a cat"
-      class="hidden dark:block w-fit h-30 ml-20 mr-6 lg:mr:30"
-      loading="eager"
-    /> -->
-  <!-- </div> -->
 
-  <div class="hidden sm:block">
-    <h2 class="font-serif text-text text-2xl sm:pt-28 pt-20 pb-2">Selected Projects</h2>
+    <h2 class="font-serif text-text sm:text-2xl text-xl sm:pt-28 pt-20 sm:pb-2 pb-1">Selected Projects</h2>
     <p class="font-sans text-text text-base pb-6">
       What I've been working on. Click to learn more.
     </p>
-  </div>
 
   <!-- Projects section -->
   <div class="grid md:grid-cols-2 gap-6">
@@ -86,21 +66,6 @@ import dataVisCardImg from "../assets/data-vis/data-vis-card-image.webp";
         tags={dataVis.tags}
       />
     </button>
-    <!-- {
-      projects.map((project) => (
-        <div id={project.cardId}>
-          <Card 
-            links={project.links},
-            linkId={project.linkId},
-            image={project.image},
-            title={project.title},
-            subtitle={project.subtitle},
-            description={project.description},
-            tags={project.tags}
-          />
-        </div>
-      ))
-    } -->
   </div>
 </Layout>
 

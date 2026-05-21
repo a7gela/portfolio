@@ -8,13 +8,15 @@ import Footer from "../components/Footer.astro";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="portfolio/faviconDark.svg" media="(prefers-color-scheme: light)" />
-    <link rel="icon" type="image/svg+xml" href="portfolio/faviconLight.svg" media="(prefers-color-scheme: dark)" />
     <meta name="generator" content={Astro.generator} />
     <title>Angela Ho</title>
+    <link rel="icon" type="image/svg+xml" href="portfolio/faviconDark.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="portfolio/faviconLight.svg" media="(prefers-color-scheme: dark)" />
+    <link rel="shortcut icon" href="/favicon.ico" />
   </head>
 
   <body class="bg-background h-screen flex flex-col items-center justify-between">
+      
       <div class="max-w-7xl w-full">
         <Header />
         <main class="sm:px-12 px-6">
@@ -23,20 +25,4 @@ import Footer from "../components/Footer.astro";
       </div>
       <Footer />
   </body>
-  
-  <!-- <body
-    class="bg-background h-screen flex justify-center"
-  >
-    <div
-      class="max-w-7xl w-full min-h-screen relative flex flex-col justify-between"
-    >
-      <div class="flex flex-col">
-        <Header />
-        <main class="sm:px-12 px-6">
-          <slot />
-        </main>
-      </div>
-      <Footer />
-    </div>
-  </body> -->
 </html>

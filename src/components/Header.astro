@@ -9,7 +9,7 @@ import iconLight from "../assets/icon-light.svg";
 ---
 
 <header
-  class="sticky top-0 z-10 bg-background font-sans text-text text-base flex flex-row justify-between items-center sm:px-8 px-4 py-4 ml-2"
+  class="sticky top-0 z-10 bg-background font-sans text-text text-base flex flex-row justify-between items-center sm:px-12 px-6 py-4"
 >
   <button id="logomark" aria-label="Logo mark" class="cursor-pointer">
     <Image
@@ -17,17 +17,19 @@ import iconLight from "../assets/icon-light.svg";
       alt="Logo mark"
       width={24}
       height={24}
-      class="m-2 dark:hidden"
+      class="dark:hidden"
+      loading={"eager"}
     />
     <Image
       src={iconLight}
       alt="Logo mark"
       width={24}
       height={24}
-      class="m-2 hidden dark:block"
+      class="hidden dark:block"
+      loading={"eager"}
     />
   </button>
-  <div class="flex flex-row sm:gap-4 gap-1">
+  <div class="flex flex-row sm:gap-4 gap-1 font-[450]">
     <a href="/portfolio">Home</a>
     <a href={email.link} target="_blank">Email</a>
     <a href={github.link} target="_blank">GitHub</a>

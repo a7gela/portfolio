@@ -347,6 +347,7 @@ const sections = {
 
   <OtherProjects
     buttonId={vocabForest.cardId}
+    sectionTitle="Previous Project"
     title={vocabForest.title}
     subtitle={vocabForest.subtitle}
   />
@@ -362,6 +363,15 @@ const sections = {
     ?.addEventListener("click", () => {
       handleClick("/portfolio/vocab-forest");
     });
+  
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+  });
 </script>
 
 <style>
